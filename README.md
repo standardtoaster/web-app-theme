@@ -8,13 +8,12 @@ it wants to be an idea to start developing a complete web application layout.
 Installation
 ------------
 
-Install the gem with:
+You can use web-app-theme >= 0.6.2 with Rails 3. If you want to use it with rails 2, use web-app-theme 0.5.3
+Specify the web-app-theme gem in your Gemfile, only for :development and :test
 
-    sudo gem install web-app-theme -s http://gemcutter.org
-  
-You can also install it as a rails plugin:
-
-    script/plugin install git://github.com/pilu/web-app-theme.git
+    group :development, :test do
+      gem 'web-app-theme', '>= 0.6.2'
+    end
 
 Usage
 -----
@@ -22,33 +21,33 @@ Usage
 ### Theme Generator
 
 Used without parameters, it generates the layout inside the application.html.erb file using the default theme.
-  
-    script/generate theme
+
+    rails g web_app_theme:theme
 
 You can specify the layout file name in the first parameter:
 
-    script/generate theme admin # it will generate a layout called `admin.html.erb`
+    rails g web_app_theme:theme admin # it will generate a layout called `admin.html.erb`
 
 If you want to use another theme, instead of the default, you can use the `--theme` option:
 
-    script/generate theme --theme="drastic-dark"
+    rails g web_app_theme:theme admin --theme="drastic-dark"
 
 You can specify the template engine with `--engine=name` option, where name can be erb (default) or haml:
 
-    script/generate theme --engine=haml
+    rails g web_app_theme:theme --engine=haml # you must specify haml in your Gemfile
 
 If you want to generate the stylesheets of a specific theme without changing the previously generated layout you can pass the `--no-layout` option:
 
-    script/generate theme --theme=bec --no_layout
+    rails g web_app_theme:theme --theme=bec --no-layout
 
 
 You can specify the text used in the header with the `--app-name` option:
 
-    script/generate theme --app_name="My New Application"
+    rails g web_app_theme:theme --app-name="My New Application"
   
 If you need a layout for login and signup pages, you can use the `--type` option with `sign` as value. Ìf not specified, the default value is `administration`
 
-    script/generate theme --type=sign
+    rails g web_app_theme:theme sign --layout-type=sign
 
 ### Themed Generator
 
@@ -56,43 +55,44 @@ Start creating your controllers manually or with a scaffold, and then use the `t
 
 If you have a controller named like the plural of the used model you can specify just the first parameter:
 
-    script/generate themed posts # you have a model named Post and a controller named PostsController
+    rails g web_app_theme:themed posts # you have a model named Post and a controller named PostsController
     
-    script/generate themed admin/gallery_pictures # you have a model named GalleryPicture and a controller named Admin::GalleryPicturesController
+    rails g web_app_theme:themed admin/gallery_pictures # you have a model named GalleryPicture and a controller named Admin::GalleryPicturesController
 
 Use the `--layout` option specifying the previously generated layout to add a link to the controller you are working on:
 
-    script/generate themed posts --layout=admin # you will see the `Posts` link in the navigation
+    rails g web_app_theme:themed posts --layout=admin # you will see the `Posts` link in the navigation
 
 If the controller has a name different to the model used, specify the controller path in the first parameter and the model name in the second one:
 
-    script/generate themed items post
+    rails g web_app_theme:themed items post
     
-    script/generate themed admin/items post
+    rails g web_app_theme:themed admin/items post
 
-If you use `will_paginate` for pagination use the `--with_will_paginate`:
+If you use `will_paginate` for pagination use the `--will-paginate`:
 
-    script/generate themed items post --with_will_paginate        
+    rails g web_app_theme:themed items post --will-paginate
 
 You can specify the template engine with `--engine=name` option, where name can be erb (default) or haml:
 
-    script/generate themed posts --engine=haml
+    rails g web_app_theme:themed posts --engine=haml
 
 If you have something like `map.resource :dashboard` in your `routes.rb` file, you can use the `--type=text` to generate a view with just text:
     
-    script/generate themed homes --type=text
+    rails g web_app_theme:themed dashboards --themed-type=text
 
 If you want to show form error messages inside the generated forms, use the following code inside your `environment.rb`
 
     ActionView::Base.field_error_proc = Proc.new do |html_tag, instance| 
       if html_tag =~ /<label/
-        %|<div class="fieldWithErrors">#{html_tag} <span class="error">#{[instance.error_message].join(', ')}</span></div>|
+        %|<div class="fieldWithErrors">#{html_tag} <span class="error">#{[instance.error_message].join(', ')}</span></div>|.html_safe
       else
         html_tag
       end
     end
 
 If you want to have translated pages, simple create in your locale.yml the keys just like config/locales/en_us.yml example.
+
 	en_us:
 	  web-app-theme: 
 	    save: Save
@@ -150,6 +150,7 @@ Contributors
 * Roberto Klein
 * Bryan Woods
 * Sandro Duarte
+* David Francisco
 
 Credits
 -------

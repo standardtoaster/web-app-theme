@@ -1,15 +1,14 @@
-.small { font-size:12px; }
+.small { font-size:11px; }
 .gray { color:#999999; }
 .hightlight { background-color:#FFFFCC; }
 
-a:link, a:visited, a:hover, a:active, h1, h2, h3 { color: #2F427A; }
+a:link, a:visited, a:hover, a:active, h1, h2, h3 { color: #7A1818; }
 a { -moz-outline: none; }
 
 body {
   color: #222;
-  background: #f0f0ee;
+  background: #e5e5e5;
   font-family: helvetica, arial, sans-serif;
-  font-size: 14px;
 }
 
 hr {
@@ -18,11 +17,11 @@ hr {
 }
 
 #header {
-  background: #2F427A;
+  background: #7A1818;
 }
 
 #header h1 {
-  padding: 20px 0;
+  padding: 15px 0;
 }
 
 #header h1 a:link, #header h1 a:active, #header h1 a:hover, #header h1 a:visited {
@@ -48,15 +47,10 @@ hr {
   background: #FFF;
 }
 
-#sidebar .notice {
-  background: #FFFFCC;
-}
-
 #sidebar h3 {  
-  background: #2F427A;
+  background: #7A1818;
   color: #FFF;
   border-bottom: 10px solid #262626;
-  font-size: 15px;
 }
 
 #main-navigation ul li {
@@ -87,7 +81,7 @@ hr {
 }
 
 #sidebar ul li a:hover, #sidebar ul li a:active {
-  background: #316291;
+  background: #470E0E;
   color: #FFF;
 }
 
@@ -101,7 +95,7 @@ hr {
 }
 
 #main-navigation ul li.active {
-  background: #f0f0ee;
+  background: #e5e5e5;
 }
 
 #main-navigation ul li a:link, #main-navigation ul li a:visited, #main-navigation ul li a:hover, #main-navigation ul li a:active,
@@ -111,8 +105,15 @@ hr {
   color: #FFF;
 }
 
+#user-navigation a.logout {
+  background: #cc0000;
+  padding: 2px 6px;
+  -moz-border-radius: 4px;
+	-webkit-border-radius: 3px;
+}
+
 .secondary-navigation li a:hover {
-  background: #5C637A;
+  background: #470E0E;
 }
 
 #main-navigation ul li.active a:link, #main-navigation ul li.active a:visited, #main-navigation ul li.active a:hover, #main-navigation ul li.active a:active {
@@ -120,9 +121,8 @@ hr {
 }
 
 .secondary-navigation {
-  background: #2F427A;
+  background: #7A1818;
   border-bottom-color: #262626;
-  font-size: 15px;
 }
 
 .secondary-navigation ul li.active, .secondary-navigation ul li.active a:hover {
@@ -140,12 +140,6 @@ hr {
 }
 
 /* pagination */
-
-.pagination span, .pagination a {
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  padding-top: 4px;
-}
 
 .pagination em {
   background: #262626;
@@ -242,7 +236,7 @@ ul.list li .item .avatar {
 }
 
 #box .block h2 {
-  background: #2F427A;  
+  background: #7A1818;  
   color: #FFF;
 }
 
